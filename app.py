@@ -3,6 +3,12 @@ from pymongo import MongoClient
 from bson.objectid import ObjectId
 import os
 
+"""
+client = MongoClient()
+db = client.slack-confessions
+"""
+host = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/slack-confessions')
+client = MongoClient(host=f'{host}?retryWrites=false')
 
 app = Flask(__name__)
 
