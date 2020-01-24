@@ -34,7 +34,10 @@ add some info here
 <a name="author(s)"></a>
 
 ## Author(s)
-add some info here
+Shashwat Prajjwal  - <i>Initial work</i> - https://github.com/sprajjwal
+Franklin Phan - <i>Initial work</i> - https://github.com/franklin-phan
+Padyn Riddell - <i>Initial work</i> - https://github.com/squeaky1273
+Xing Ye - <i>Initial work</i> - https://github.com/xingY97
 
 <a name="credit"></a>
 
