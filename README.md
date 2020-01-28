@@ -1,13 +1,10 @@
 # Slack Confessions
 
-* [ Getting Started. ](#start)
-    * [ Prerequisites. ](#pre)
-        * [ Environment. ](#env)
-    * [ Installing. ](#install)
-        * [ Cloning Repo. ](#clone)
-* [ Built With. ](#built)
-* [ Author(s). ](#author(s))
-* [ Acknowledgment. ](#credit)
+- [Slack Confessions](#slack-confessions)
+  - [Getting Started](#getting-started)
+  - [Built With](#built-with)
+  - [Author(s)](#authors)
+  - [Acknowledgements](#acknowledgements)
 
 <a name="start"></a>
 
@@ -19,7 +16,9 @@ add some info here
 
 <a name="env"></a>
 <h4>Environment</h4>
-Start up by installing the requirements using `pip3 install -r requirements.txt`
+Start up by installing the requirements using 
+    
+    pip3 install -r requirements.txt
 
 How to use:
 some information...
@@ -46,6 +45,7 @@ some information...
 <a name="author(s)"></a>
 
 ## Author(s)
+
 * Shashwat Prajjwal  - <i>Initial work</i> - https://github.com/sprajjwal
 * Franklin Phan - <i>Initial work</i> - https://github.com/franklin-phan
 * Padyn Riddell - <i>Initial work</i> - https://github.com/squeaky1273
