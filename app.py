@@ -28,6 +28,19 @@ except:
 # notes:
 # Add this a tag for add to slack: <a href=f"https://slack.com/oauth/authorize?scope={ oauth_scope }&client_id={ client_id }&redirect_uri={network}/finish_auth">Add to Slack</a>
 
+@app.route('/')
+def index():
+    """Return homepage"""
+    return render_template('index.html')
+
+@app.route('/search', method=['GET', 'POST'])
+def search():
+    """Search for specific workspace on Slack"""
+    form = SearchForm()
+
+@app.route('/admin')
+def admin():
+
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=os.environ.get('PORT', 5000))
