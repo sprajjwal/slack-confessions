@@ -16,14 +16,15 @@ app = Flask(__name__)
 slackWrapper = mySlack()
 
 
-# check for token and set it:
-token = ""
-# open token.json and load access token
-try:
-    with open('./token.json', 'r') as f:
-        slackWrapper.set_token(json.load(f)['access_token']) #set access token in the object
-except:
-    print("no tokens found")
+# edit this function for job scheduling
+def scheduled_jobs():
+    print('I am working...')
+
+# Task Scheduler
+scheduler = BackgroundScheduler()
+if os.environ.get("WERKZEUG_RUN_MAIN") == "true":
+    job = scheduler.add_job(scheduled_jobs, 'interval', minutes=1) #set minutes here
+scheduler.start()
 
 # notes:
 # Add this a tag for add to slack: <a href=f"https://slack.com/oauth/authorize?scope={ oauth_scope }&client_id={ client_id }&redirect_uri={network}/finish_auth">Add to Slack</a>
@@ -37,10 +38,16 @@ def index():
 def search():
     """Search for specific workspace on Slack"""
     form = SearchForm()
+    pass
 
 @app.route('/admin')
 def admin():
+    pass
 
+@app.route('/auth')
+def setup
+    """ authentication, adding app to slack, writing data to db happens here"""
+    pass
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=os.environ.get('PORT', 5000))
