@@ -32,20 +32,31 @@ scheduler.start()
 @app.route('/')
 def index():
     """Return homepage"""
-    return render_template('index.html')
+    search = SearchForm(request.form)
+    if request.method == 'POST':
+        return search_results(search)
+    return render_template('index.html', form=search)
 
-@app.route('/search', method=['GET', 'POST'])
+@app.route('/results', method=['GET', 'POST'])
 def search():
     """Search for specific workspace on Slack"""
-    form = SearchForm()
+    result = []
+    search_string = search.data['search']
+
+    if not results:
+        flash('No results found')
+        return redirect('/')
+    else: # display search results
+        return render_template('results.html', results=results)
     pass
 
 @app.route('/admin')
 def admin():
+    """Admin page to post confession"""
     pass
 
 @app.route('/auth')
-def setup
+def setup():
     """ authentication, adding app to slack, writing data to db happens here"""
     pass
 
