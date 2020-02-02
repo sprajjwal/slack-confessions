@@ -45,5 +45,35 @@ class mySlack:
         self.channels = {channel["name"]: channel["id"] for channel in res["channels"]}
         return self.channels
     
- 
+    def get_im_channel(self):
+        """ helper method used to find the message channel"""
+        res = requests.get('https://slack.com/api/conversations.list', {
+            'token': 'self.access_token,
+            'types' : 'im',
+        }).json()
+
+        # to make sure we get a response
+        while not res['ok']:
+            res = requests.get('https://slack.com/api/conversations.list', {
+                'token' : self.access_token,
+                'types' : 'im',
+            }).json()
+        
+        for channel in res['channels']:
+            if channel["user"] == self.bot_id:
+                self.im_channel = channel["id"]
+        return self.im_channel
+
+    def get_messages(self, channel, oldest=0):
+        """ get's every message sent to the bot """
+        res = requests.get('https://slack.com/api/conversations.history', {
+            'token': self.access_token,
+            'channel': channel,
+            'oldest': oldest
+        }).json()
+        ret_arr = {}
+        print(res)
+        for message in res['messages']:
+            ret_arr[message['ts']] = message['text']
+        return ret_arr
     
