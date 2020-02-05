@@ -53,12 +53,12 @@ def search():
 @app.route('/admin')
 def admin():
     """Admin page to post confession (User)"""
-    pass
+    return 'Hello, world'
 
 @app.route('/auth')
 def setup():
     """ authentication, adding app to slack, writing data to db happens here"""
-    pass
+    return 'Hello, world'
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=os.environ.get('PORT', 5000))
