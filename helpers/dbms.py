@@ -64,9 +64,14 @@ def get_message(db, channel_id):
     """ gets an approved message from the database for a given channel and
     delete it from place"""
     confession = db.find_one({'channel_id': channel_id})
-    for i in range(len(msg)):
-        if confession['messages'][i]['approved'] and confession['messages'][i]['posted'] == False:
-            confess = confession['messages'].pop(i)
+    confess = None
+    for i in range(len(confession['messages'])):
+        if confession['messages'][i]['approved'] == False:
+            del confession['messages'][i]
+        elif confession['messages'][i]['approved']:
+            if not confession['messages'][i]['posted'] == False:
+                confess = confession['messages'].pop(i)
+        
     db.update_one(
         {"channel_id": channel_id},
         {'$set': confession}
