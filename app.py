@@ -37,6 +37,14 @@ def index():
         return search_results(search)
     return render_template('index.html', form=search)
 
+@app.route('/begin_auth')
+def begin_auth():
+    """ call this for add to slack button """
+    client_id = os.environ["SLACK_CLIENT_ID"]
+    client_secret = os.environ["SLACK_CLIENT_SECRET"]
+    oauth_scope = 'bot, channels:read, chat:write:bot, im:read, im:history' #os.environ["SLACK_BOT_SCOPE"]
+    return f'<a href="https://slack.com/oauth/authorize?scope={ oauth_scope }&client_id={ client_id }&redirect_uri={network}/finish_auth">Add to Slack</a>'
+
 @app.route('/results', method=['GET', 'POST'])
 def search():
     """Search for specific workspace on Slack"""
