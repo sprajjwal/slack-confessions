@@ -16,19 +16,18 @@ from pymongo import MongoClient
         'team_name': str,
         'post_channels': ['str'], # all available channels
         'post_to': str,
-        'messages'= {
-            'im_channel': {
-                'ts': latest message,
-                'all': [
-                    {
-                        'ts': time of this message,
-                        'body': str,
-                        'posted': bool,
-                        'approved': bool
-                    }
-                ]
-            }
+        'im_channels': {
+            'channel': ts,
         }
+        'messages'= [
+            {
+                ts: timestamp,
+                'body': str,
+                'posted': bool,
+                'approved': bool,
+                'denied': bool
+            }
+        ]
         
     }
 
@@ -117,12 +116,13 @@ def get_messages_from_channel(bot_access_token, channel, ts=0):
     if len(res['messages']) == 0:
         return None
     for msg in res['messages']:
-        messages.append({
+        messages = [{
         'ts': msg['ts'],
         'body': msg['text'],
         'posted': False,
-        'approved': False
-        })
+        'approved': False,
+        'denied': False
+        }] + messages
     return messages
 
 def update_db(db, team_id):
@@ -131,20 +131,13 @@ def update_db(db, team_id):
     im_channels = get_im_channels(team['bot_access_token'], team['bot_id'])
 
     for c in im_channels:
-        if c not in team["messages"]:
+        if c not in team["im_channels"]:
             msgs = get_messages_from_channel(team['bot_access_token'], c, 0)
-            if msgs is not None:
-                team["messages"][c] = {
-                    'ts': msgs[0]['ts'],
-                    'all': msgs
-                }
         else:
-            msgs = get_messages_from_channel(team['bot_access_token'], c, team["messages"][c]['ts'])
-            if msgs is not None:
-                team["messages"][c] = {
-                    'ts': msgs[0]['ts'],
-                    'all': msgs + team["messages"][c]['all']
-            }
+            msgs = get_messages_from_channel(team['bot_access_token'], c, team["im_channels"][c])
+        if msgs is not None:
+            team["messages"] += msgs
+            team['im_channels'][c] = msgs[len(msgs)-1]['ts']
     db.update_one({
         'team_id': team['team_id']
     }, {
