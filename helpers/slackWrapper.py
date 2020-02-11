@@ -32,18 +32,6 @@ from pymongo import MongoClient
         
     }
 
-    messages = [{
-        "channel": string,
-        "new": [{
-            'ts': message['ts'],
-            'body': message['text'],
-            'posted': False,
-            'approved': 'none'
-        },
-        {}
-    }
-    ]
-
 """
 
 def finish_auth(db, auth_code, post_to='random'):
