@@ -144,3 +144,20 @@ def update_db(db, team_id):
         "$set": team
     })
 
+def get_message(db, team_id):
+    """ gets an approved message from the database to post on slack,
+    update it's posted to True.
+    Returns False if there are no approved confessions that need to be posted"""
+    team = db.find_one({'team_id': team_id})
+    for i in range(len(team["messages"]) - 1, 0, -1):
+        m = team["messages"][i]
+        print(m)
+        if m["approved"] and m['posted'] == False and m['denied'] == False:
+            team["messages"][i]['posted'] = True
+            db.update_one({
+                'team_id': team['team_id']
+            }, {
+                "$set": team
+            })
+            return m['body']
+    return False
