@@ -2,11 +2,7 @@ from flask import Flask, flash, redirect, render_template, request, session, abo
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 import os
-<<<<<<< HEAD
 from slack/slackWrapper import *
-=======
-from slack/slackWrapper import mySlack
->>>>>>> ca7f8dabdb5b646c4aef809b1d01349cf2a91dcf
 
 """
 client = MongoClient()
