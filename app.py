@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 import os
-# from slack/slackWrapper import mySlack
+from slack/slackWrapper import *
 
 """
 client = MongoClient()
@@ -19,11 +19,11 @@ app = Flask(__name__)
 def scheduled_jobs():
     print('I am working...')
 
-# Task Scheduler
-# scheduler = BackgroundScheduler()
-# if os.environ.get("WERKZEUG_RUN_MAIN") == "true":
-#     job = scheduler.add_job(scheduled_jobs, 'interval', minutes=1) #set minutes here
-# scheduler.start()
+Task Scheduler
+scheduler = BackgroundScheduler()
+if os.environ.get("WERKZEUG_RUN_MAIN") == "true":
+    job = scheduler.add_job(scheduled_jobs, 'interval', minutes=1) #set minutes here
+scheduler.start()
 
 # notes:
 # Add this a tag for add to slack: <a href=f"https://slack.com/oauth/authorize?scope={ oauth_scope }&client_id={ client_id }&redirect_uri={network}/finish_auth">Add to Slack</a>
