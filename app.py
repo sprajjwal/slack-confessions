@@ -2,7 +2,8 @@ from flask import Flask, flash, redirect, render_template, request, session, abo
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 import os
-from slack/slackWrapper import *
+from helpers.slackWrapper import *
+from apscheduler.schedulers.background import BackgroundScheduler
 
 """
 client = MongoClient()
@@ -13,7 +14,6 @@ client = MongoClient(host=f'{host}?retryWrites=false')
 
 # class object initialization
 app = Flask(__name__)
-slackWrapper = mySlack()
 
 # edit this function for job scheduling
 def scheduled_jobs():
