@@ -1,8 +1,8 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, flash, redirect, render_template, request, session, abort
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 import os
-# from slack/slackWrapper import mySlack
+from slack/slackWrapper import mySlack
 
 """
 client = MongoClient()
@@ -13,17 +13,17 @@ client = MongoClient(host=f'{host}?retryWrites=false')
 
 # class object initialization
 app = Flask(__name__)
-
+slackWrapper = mySlack()
 
 # edit this function for job scheduling
 def scheduled_jobs():
     print('I am working...')
 
 # Task Scheduler
-# scheduler = BackgroundScheduler()
-# if os.environ.get("WERKZEUG_RUN_MAIN") == "true":
-#     job = scheduler.add_job(scheduled_jobs, 'interval', minutes=1) #set minutes here
-# scheduler.start()
+scheduler = BackgroundScheduler()
+if os.environ.get("WERKZEUG_RUN_MAIN") == "true":
+    job = scheduler.add_job(scheduled_jobs, 'interval', minutes=1) #set minutes here
+scheduler.start()
 
 # notes:
 # Add this a tag for add to slack: <a href=f"https://slack.com/oauth/authorize?scope={ oauth_scope }&client_id={ client_id }&redirect_uri={network}/finish_auth">Add to Slack</a>
@@ -31,31 +31,47 @@ def scheduled_jobs():
 @app.route('/')
 def index():
     """Return homepage"""
-    # search_workspace = request.query.filter_by(list_channels)
     return render_template('index.html')
 
-# @app.route('/results', method=['GET', 'POST'])
-# def search():
-#     """Search for specific workspace on Slack"""
-#     results = []
-#     search_string = search.data['search']
+@app.route('/register')
+def register():
+    return register()
 
-#     if not results:
-#         # flash('No results found')
-#         return redirect('/')
-#     else: # display search results
-#         return render_template('results.html', results=results)
-#     pass
+@app.route('/login', methods=['POST'])
+def do_admin_login():
+    if request.form['password'] == 'password' and request.form['username'] == 'admin':
+        session['logged_in'] = True
+    else:
+        flash('wrong password!')
+        #return index()  
 
 @app.route('/admin')
+@login_required
 def admin():
     """Admin page to post confession (User)"""
-    return 'Hello, world'
+    return admin()
 
+@app.route('/begin_auth')
+@login_required
+def begin_auth():
+    return redirect(f"https://slack.com/oauth/authorize?scope={ oauth_scope }&client_id={ client_id }&redirect_uri={network}/finish_auth")
+
+@app.route('/admin/<team_id>')
+@login_required
+def approve_or_deny():
+    return admin()
+
+@app.route("/logout")
+def logout():
+    session['logged_in'] = False
+    return index()
+
+"""
 @app.route('/auth')
 def setup():
-    """ authentication, adding app to slack, writing data to db happens here"""
+    # authentication, adding app to slack, writing data to db happens here
     return 'Hello, world'
+"""
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=os.environ.get('PORT', 5000))
