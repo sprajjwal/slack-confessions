@@ -164,6 +164,10 @@ header.masthead {
   margin-left: auto;
   margin-right: auto;
 } */
+#features-logo{
+  max-width: 100%;
+  height: auto;
+}
 .logo-bg{
   background-image:url("static/img/logo.png");
   background-repeat: no-repeat;
