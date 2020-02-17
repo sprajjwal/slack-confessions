@@ -36,11 +36,11 @@ def index():
     """Return homepage"""
     return render_template('index.html')
 
-@app.route('/register/<team_id>', method='GET')
+@app.route('/register/<team_id>')
 def get(team_id):
     return render_template('register.html', team_id=team_id)
     
-@app.route('/register/<team_id>', method='POST')
+@app.route('/register/<team_id>', methods=['POST'])
 def register(team_id):
     """Register to start writing/posting confessions"""
     temp_code = request.form.get('password')
@@ -77,7 +77,7 @@ def login():
     password = request.args.get('password')
     
     if request.method == 'POST':
-        
+        pass
     
     # if request.form['password'] == 'password' and request.form['username'] == 'admin':
     #     session['logged_in'] = True
