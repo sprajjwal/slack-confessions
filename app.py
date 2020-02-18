@@ -39,8 +39,8 @@ def index():
 @app.route('/register/<team_id>')
 def get(team_id):
     return render_template('register.html', team_id=team_id)
-    
-@app.route('/register/<team_id>', methods=['POST'])
+
+@app.route('/register/<team_id>', methods=["POST"])
 def register(team_id):
     """Register to start writing/posting confessions"""
     temp_code = request.form.get('password')
@@ -57,7 +57,7 @@ def register(team_id):
 def begin_auth():
     return redirect(f"https://slack.com/oauth/authorize?scope={ oauth_scope }&client_id={ client_id }&redirect_uri={network}/finish_auth")
 
-@app.route('/finish_auth", methods=["GET", "POST"])')
+@app.route('/finish_auth', methods=["GET", "POST"])
 def post_install():
     # Retrieve the auth code from the request params
     auth_code = request.args['code']
@@ -67,17 +67,20 @@ def post_install():
     else:
         return redirect(url_for('register', team_id=team_id))
 
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/login', methods=["GET", "POST"])
 def login():
     """Login to the web app"""
-    if request.method == 'GET':
+    if request.method == "GET":
         return render_template('login.html')
 
     team_id = request.args.get('team_id')
     password = request.args.get('password')
     
-    if request.method == 'POST':
-        pass
+    if request.method == "POST":
+        if request.form['team_id'] and request.form['password'] is True:
+            return redirect('/admin')
+        else:
+            flash('Incorrect information!')
     
     # if request.form['password'] == 'password' and request.form['username'] == 'admin':
     #     session['logged_in'] = True
@@ -93,7 +96,7 @@ def admin():
 @app.route('/admin/<team_id>')
 def authentication(team_id):
     #[team_id] = code.split("^", 1)
-    room = ss_room.find_one({'team_id': team_id})
+    room = user.find_one({'team_id': team_id})
     return redirect('/')
 
 @app.route("/logout")

@@ -1,8 +1,7 @@
 {% extends 'base.html' %}
 
-{%block title%}Slack Confessions Login{%endblock%}
+{%block title%}<title>Slack Confessions Login</title>{%endblock%}
 {% block content %}
-<body>
     <div class="container" id="login">
       <div class="row">
         <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
@@ -11,8 +10,8 @@
               <h5 class="card-title text-center">Sign In</h5>
               <form class="form-signin">
                 <div class="form-label-group">
-                  <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-                  <label for="inputEmail">Email address</label>
+                  <input type="text" id="inputEmail" class="form-control" placeholder="team id" required autofocus>
+                  <label for="inputEmail">Team Id</label>
                 </div>
   
                 <div class="form-label-group">
@@ -32,5 +31,4 @@
         </div>
       </div>
     </div>
-  </body>
 {%endblock%}
