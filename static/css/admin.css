@@ -1,0 +1,27 @@
+.admin-container {
+  margin: 56px 0 0 0;
+
+}
+.card{
+  width:80%;
+  align-content: center;
+}
+
+.card-title {
+    text-align:right;
+  }
+  
+  #card-buttons {
+    float: right;
+  }
+
+  .card-body img {
+    width: 60%;
+    height: 80%;
+    border: 7px solid rgba(0, 0, 0, 0.1);
+    background-color: white;
+  }
+
+  .figure {
+    text-align:center;
+  }

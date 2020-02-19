@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{%block title%}
+    <title>Admin</title>
+    <link rel="stylesheet" href="/static/css/admin.css">
+{%endblock%}
+
+{% block content %}
+<div class="container admin-container">
+    <form action="/admin/{{code}}">
+        <button type="submit" class="btn btn-success float-right">Submit</button>
+        <div class="card text-white bg-info mb-3" >
+            <div class="card-body">
+                <div class="row no-gutters">
+                    <div class="col-md-4 align-self-center">
+                        <figure class="figure">
+                                <img class="mx-auto rounded-circle" src="/static/img/logo-black.png" alt="logo-black" style="width:60%">
+                                <figcaption>User-ID</figcaption>
+                        </figure>
+                    </div>
+                        <div class="col-md-8 bg-dark">
+                            <div class="column">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{messages[0].ts}} Hours Ago</h5>
+                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>      
+                                    <div class="row" id="card-buttons">
+                                        <button type="button" class="btn btn-success">Approve</button>
+                                        <button type="button" class="btn btn-danger">Deny</button>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+{%endblock%}
