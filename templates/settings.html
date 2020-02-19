@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+    
+{%block title%}
+    <title>Admin Settings</title>
+    <link rel="stylesheet" href="/static/css/settings.css">
+    
+{%endblock%}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-4 pb-5">
+            <!-- Account Sidebar-->
+            <div class="author-card pb-3">
+                <div class="author-card-cover" style="background-image: url(https://demo.createx.studio/createx-html/img/widgets/author/cover.jpg);"></div>
+                <div class="author-card-profile">
+                    <div class="author-card-avatar"><img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="avatar profile">
+                    </div>
+                    <div class="author-card-details">
+                        <h5 class="author-card-name text-lg"> {{team['team_name']}}</h5><span class="author-card-position">{{team['team_id']}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Profile Settings-->
+        <div class="col-lg-8 pb-5">
+            <form class="row">
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="CurrentPassword">Current Password</label>
+                        <input class="form-control" type="text" id="CurrentPassword" placeholder="current Password" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="account-pass">New Password</label>
+                        <input class="form-control" type="password" id="account-pass">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="account-confirm-pass">Confirm Password</label>
+                        <input class="form-control" type="password" id="account-confirm-pass">
+                    </div>
+                </div>
+                <div class="col-12">
+                    <hr class="mt-2 mb-3">
+                    <div class="d-flex flex-wrap justify-content-between align-items-center">
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <label class="input-group-text" for="inputGroupSelect01">Post To:</label>
+                            </div>
+                            <select class="custom-select" id="inputGroupSelect01">
+                              <option selected>Choose...</option>
+                              <option value="1"> Channel One</option>
+                              <option value="2">Channel Two</option>
+                              <option value="3">Channel Three</option>
+                            </select>
+                          </div>
+
+                        <button class="btn btn-style-1 btn-primary" type="button" data-toast="" data-toast-position="topRight" data-toast-type="success" data-toast-icon="fe-icon-check-circle" data-toast-title="Success!" data-toast-message="Your profile updated successfuly.">Update Profile</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{%endblock%}
