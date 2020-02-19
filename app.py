@@ -1,4 +1,4 @@
-from flask import Flask, flash, redirect, render_template, request, session, abort
+from flask import Flask, flash, redirect, render_template, request
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 import os
@@ -72,32 +72,31 @@ def login():
     """Login to the web app"""
     if request.method == "GET":
         return render_template('login.html')
-
-    team_id = request.args.get('team_id')
-    password = request.args.get('password')
     
     if request.method == "POST":
-        if request.form['team_id'] and request.form['password'] is True:
-            return redirect('/admin')
+        team_id = request.args.get('team_id')
+        password = request.args.get('password')
+        
+        user = users.find_one({'team_id': team_id, 'password': password})
+        if user:
+            code = f"{team_id}^{password}"
+            return redirect(url_for('authentication',code=code))
         else:
-            flash('Incorrect information!')
-    
-    # if request.form['password'] == 'password' and request.form['username'] == 'admin':
-    #     session['logged_in'] = True
-    # else:
-    #     flash('wrong password!')
-    #     #return index()
+            return redirect(url_for('login', message='incorrect credentials'))
 
-@app.route('/admin')
-def admin():
-    """Admin page to post confession (User)"""
-    return render_template('admin.html')
+@app.route('/admin/<code>')
+def authentication(code):
+    [team_id, password] = code.split("^", 1)
+    room = users.find_one({'team_id': team_id, 'password': password})
+    if room:
+        confession = confessions.find_one({'team_id':team_id})
+        return render_template('admin.html', messages=confession["messages"])
+    else:
+        return redirect(url_for('login', message='incorrect credentials'))
 
-@app.route('/admin/<team_id>')
-def authentication(team_id):
-    #[team_id] = code.split("^", 1)
-    room = user.find_one({'team_id': team_id})
-    return redirect('/')
+@app.route('/admin', methods=['POST'])
+def post_confessions():
+    pass
 
 @app.route("/logout")
 def logout():
