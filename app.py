@@ -94,14 +94,26 @@ def authentication(code):
     else:
         return redirect(url_for('login', message='incorrect credentials'))
 
-@app.route('/admin', methods=['POST'])
-def post_confessions():
+@app.route('/admin/<code>', methods=['POST'])
+def post_confessions(code):
+    # make sure to check form for different format
+    form = request.form.list
+    [team_id, password] = code.split("^", 1)
+    room = users.find_one({'team_id': team_id, 'password': password})
     pass
+
+@app.route('/admin/<code>/settings', methods=['GET','POST'])
+def settings(code):
+    if methods == 'GET':
+        return render_template('settings.html')
+
+    if methods == 'POST':
+        pass
 
 @app.route("/logout")
 def logout():
     """Log out of the workspace confession page"""
-    session['logged_in'] = False
+    # session['logged_in'] = False
     return redirect('/')
 
 
