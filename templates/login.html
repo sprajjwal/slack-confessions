@@ -10,43 +10,32 @@
 {% block content %}
 
 <div class="container">
-    <div class="row register-row">
-
     <div class="col-lg-10 col-xl-9 mx-auto">
         <div class="card card-signin flex-row my-5">
-        <div class="card-img-left d-none d-md-flex">
-            <!-- Background image for card set in CSS -->
-            
-        </div>
-        <div class="card-body">
-            <h5 class="card-title text-center">Log In</h5>
-            <form class="form-Login">
-
-            <!-- <div class="form-label-group">
-                <div class="form-group">
-                    <label for="exampleInputID"></label>
-                    <p>{{team_id}}</p>
-                    </div>
-            </div> -->
-
-            <hr>
-            <div class="form-label-group">
-                <input type="Team id" id="inputTeamId" class="form-control" placeholder="Team ID" required>
-                <label for="inputTeamId">Team ID</label>
+            <div class="card-img-left d-none d-md-flex">
+                <!-- Background image for card set in CSS -->
+                
             </div>
-            
-            <div class="form-label-group">
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-                <label for="inputPassword">Password</label>
+            <div class="card-body">
+                <h4 class="card-title text-center">Sign In</h4>
+                <form class="form-signin">
+
+                <hr>
+                <div class="form-label-group">
+                    <input type="text" id="team_id" class="form-control" placeholder="Team id" required>
+                    <label for="team_id">Team Id</label>
+                </div>
+                
+                <div class="form-label-group">
+                    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                    <label for="inputRepeatPassword">Password</label>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
+
+
+                </form>
             </div>
-            <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign In</button>
-            <!-- <a class="d-block text-center mt-2 small txt-primary" href="/login">Sign In</a> -->
-
-
-            </form>
         </div>
-        </div>
-    </div>
     </div>
 </div>
 {%endblock%}
