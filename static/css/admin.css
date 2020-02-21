@@ -1,6 +1,16 @@
 .admin-container {
   margin: 56px 0 0 0;
+  width: 100%;
 
+}
+.admin-form {
+  display: flex;
+  flex-direction: column;
+}
+.admin-button {
+  min-width: 100px;
+  max-width: 200px;
+  justify-self: right;
 }
 .card{
   width:80%;
@@ -13,13 +23,13 @@
   
   #card-buttons {
     float: right;
+    margin:auto;
   }
 
-  .card-body img {
-    width: 60%;
-    height: 80%;
-    border: 7px solid rgba(0, 0, 0, 0.1);
-    background-color: white;
+  .card-body-inner{
+    width:149%;
+    margin: auto;
+    padding: 10px;
   }
 
   .figure {
