@@ -12,6 +12,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background: linear-gradient(to right, rgb(157, 165, 175), #33AE);
 }
 
 body {

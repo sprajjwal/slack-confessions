@@ -3,6 +3,7 @@ import json
 import slack
 import requests
 from pymongo import MongoClient
+from secrets import *
 
 """
     This file handles the confessions stored in MongDB. 
@@ -33,10 +34,6 @@ from pymongo import MongoClient
 
 """
 
-client_id = '922216111702.908540590675' # os.environ["SLACK_CLIENT_ID"]
-client_secret = '0d7e29061fd95544be917be713b46cc5' # os.environ["SLACK_CLIENT_SECRET"]
-
-
 def finish_auth(db, auth_code, post_to='random'):
     """ finishes authenticating with slack and handles response 
         Returns True if successfully added or False if it 
@@ -45,6 +42,7 @@ def finish_auth(db, auth_code, post_to='random'):
     # An empty string is a valid token for this request
     client = slack.WebClient(token="")
 
+    print("-______", client_id)
     # Request the auth tokens from Slack
     response = client.oauth_access(
         client_id=client_id,

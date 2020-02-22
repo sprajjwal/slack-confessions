@@ -3,7 +3,6 @@
     --input-padding-y: .75rem;
 }
 body {
-    background:white;
     background: linear-gradient(to right, rgb(157, 165, 175), #33AE);
     margin-top: 0;
 }

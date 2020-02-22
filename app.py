@@ -4,7 +4,7 @@ from bson.objectid import ObjectId
 import os
 from helpers.slackWrapper import *
 from apscheduler.schedulers.background import BackgroundScheduler
-
+from secrets import *
 """
 client = MongoClient()
 """
@@ -17,8 +17,6 @@ confessions = db.confessions
 
 app = Flask(__name__)
 
-client_id = '922216111702.908540590675' # os.environ["SLACK_CLIENT_ID"]
-client_secret = '0d7e29061fd95544be917be713b46cc5' # os.environ["SLACK_CLIENT_SECRET"]
 oauth_scope = 'bot, channels:read, chat:write:bot, im:read, im:history' #os.environ["SLACK_BOT_SCOPE"]
 network = "http://127.0.0.1:5000"
 
@@ -78,9 +76,10 @@ def login():
         return render_template('login.html')
     
     if request.method == "POST":
-        team_id = request.args.get('team_id')
-        password = request.args.get('password')
+        team_id = request.form.get('team_id')
+        password = request.form.get('password')
         
+        print("++++++++++++++", team_id, password)
         user = users.find_one({'team_id': team_id, 'password': password})
         if user:
             code = f"{team_id}^{password}"
