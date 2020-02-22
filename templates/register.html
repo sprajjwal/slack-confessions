@@ -19,7 +19,7 @@
             </div>
             <div class="card-body">
                 <h4 class="card-title text-center">Register</h4>
-                <form class="form-signin" action="/register/{{team_id}}">
+                <form class="form-signin" action="/register/{{team_id}}" method="POST">
                     <div class="form-label-group">
                         <div class="form-group">
                             <p class="register-team">Team ID: {{team_id}}</p>
@@ -27,7 +27,7 @@
                     </div>
                     <hr>
                     <div class="form-label-group">
-                        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                        <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required>
                         <label for="inputPassword">Password</label>
                     </div>
                     <div class="form-label-group">

@@ -117,12 +117,7 @@ body {
     font-weight: 300;
 }
 
-footer {
-    position: absolute;
-    left:0;
-    bottom:0;
-    right:0;
-}
+
 .register-row {
     margin-top: 20vh;
 }

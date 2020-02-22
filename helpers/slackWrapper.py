@@ -33,6 +33,10 @@ from pymongo import MongoClient
 
 """
 
+client_id = '922216111702.908540590675' # os.environ["SLACK_CLIENT_ID"]
+client_secret = '0d7e29061fd95544be917be713b46cc5' # os.environ["SLACK_CLIENT_SECRET"]
+
+
 def finish_auth(db, auth_code, post_to='random'):
     """ finishes authenticating with slack and handles response 
         Returns True if successfully added or False if it 
@@ -56,7 +60,7 @@ def finish_auth(db, auth_code, post_to='random'):
         team_name = response['team_name'] # grab team name
         access_token = response['access_token'] # set access token
         bot_token = response['bot']['bot_access_token'] # set bot access token
-        post_channel = list_channels(db, access_token, post_to) # set the channel name we post in
+        post_channel = list_channels(access_token, team_id) # set the channel name we post in
         team = {
             'team_id': team_id,
             'bot_id': bot_id,
@@ -64,28 +68,30 @@ def finish_auth(db, auth_code, post_to='random'):
             'bot_access_token' : bot_token,
             'team_name': team_name,
             'post_channels': post_channel,
+            'im_channels': {},
             'post_to': 'random',
-            'messages': {}
+            'messages': [],
         }
         db.insert_one(team)
         update_db(db, team_id)
-        return True
+        print("_____________")
+        print(team_id)
+        return team_id
 
 
 def post_to_channel(db, team_id, message):
     """ Send a message to a channel"""
     team = db.find_one({'team_id': team_id})
     requests.post('https://slack.com/api/chat.postMessage', {
-        'token': team['access_token'],
+        'token': team['bot_access_token'],
         'channel': team['post_to'],
         'text': message,
         'username': "Slack-confessions",
     }).json()
 
-def list_channels(db, team_id):
+def list_channels(access_token, team_id):
     """ lists all the available channels """
-    team = db.find_one({'team_id': team_id})
-    res = requests.get('https://slack.com/api/channels.list', {'token': team['access_token']}).json()
+    res = requests.get('https://slack.com/api/channels.list', {'token': access_token}).json()
     channels = {channel["name"]: channel["id"] for channel in res["channels"]}
     return channels
 

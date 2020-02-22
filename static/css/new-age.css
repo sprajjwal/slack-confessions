@@ -6,8 +6,10 @@
 
 html,
 body {
+  min-height: 100%;
   width: 100%;
   height: 100%;
+  display:flex;
 }
 
 
@@ -393,6 +395,8 @@ footer {
   text-align: center;
   color: rgba(255, 255, 255, 0.3);
   background-color: #222222;
+  justify-self: flex-end;
+  align-self: flex-end;
 }
 
 footer p {
