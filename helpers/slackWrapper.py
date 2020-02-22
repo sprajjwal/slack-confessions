@@ -3,7 +3,9 @@ import json
 import slack
 import requests
 from pymongo import MongoClient
-from secrets import *
+
+client_id = os.environ["SLACK_CLIENT_ID"]
+client_secret = os.environ["SLACK_CLIENT_SECRET"]
 
 """
     This file handles the confessions stored in MongDB. 

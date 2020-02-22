@@ -4,10 +4,11 @@ from bson.objectid import ObjectId
 import os
 from helpers.slackWrapper import *
 from apscheduler.schedulers.background import BackgroundScheduler
-from secrets import *
+
 """
 client = MongoClient()
 """
+
 host = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/slack-confessions')
 client = MongoClient(host=f'{host}?retryWrites=false')
 db = client.get_default_database()
@@ -17,6 +18,8 @@ confessions = db.confessions
 
 app = Flask(__name__)
 
+client_id = os.environ["SLACK_CLIENT_ID"]
+client_secret = os.environ["SLACK_CLIENT_SECRET"]
 oauth_scope = 'bot, channels:read, chat:write:bot, im:read, im:history' #os.environ["SLACK_BOT_SCOPE"]
 network = "http://127.0.0.1:5000"
 
