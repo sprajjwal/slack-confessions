@@ -6,30 +6,33 @@
 {%endblock%}
 
 {% block content %}
-<div class="container admin-container">
+<div class="container admin-containe">
     <form action="/admin/{{code}}" class="form admin-form">
         <button type="submit" class="btn btn-success admin-button">Submit</button>
-        <div class="container">
-            <div class="card text-white bg-info mb-3" >
-                <div class="card-body-inner">
-                    <div class="row no-gutters">
-                            <div class="col-md-8 bg-dark">
-                                <div class="column">
-                                    <div class="card-body">
-                                        <h5 class="card-title">{{messages[0].ts}} Hours Ago</h5>
-                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>      
-                                        <div class="row" id="card-buttons">
-                                            <input type="checkbox" button type="button" class="btn btn-success">Approve</button>
-                                            <input type="checkbox" class="btn btn-danger">Deny</button>
-                                        </div>
-                                    </div>  
+        <div class="admin-messages">
+            {% for msg in messages %}
+                <div class="card text-white bg-info" >
+                    <div class="bg-dark admin-inner">
+                        <div class="card-body" id="card-body-{{loop.index}}">
+                            <!-- <h5 class="card-title">{{msg.ts}} Hours Ago</h5> -->
+                            <p class="card-text">{{msg.body}}</p>      
+                            <div class="form-check-inline" id="card-buttons">
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" name="opt-{{loop.index}}" value="approved">Approve
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" name="opt-{{loop.index}}" value="approved">Deny
+                                    </label>
                                 </div>
                             </div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            {% endfor %}
         </div>
-        
     </form>
 </div>
 {%endblock%}

@@ -1,37 +1,33 @@
-.admin-container {
-  margin: 56px 0 0 0;
-  width: 100%;
 
-}
-.admin-form {
+/* .admin-form {
   display: flex;
   flex-direction: column;
-}
+} */
 .admin-button {
   min-width: 100px;
   max-width: 200px;
   justify-self: right;
 }
 .card{
-  width:80%;
   align-content: center;
+  padding: 15px;
 }
 
-.card-title {
-    text-align:right;
-  }
-  
-  #card-buttons {
-    float: right;
-    margin:auto;
-  }
+/* .card-title {
+  text-align:right;
+} */
 
-  .card-body-inner{
-    width:149%;
-    margin: auto;
-    padding: 10px;
-  }
+#card-buttons {
+  float: right;
+  margin-bottom: 10px;
+}
 
-  .figure {
-    text-align:center;
-  }
+.admin-inner{
+  width: 100%;
+  height: 100%;
+  margin: auto;
+}
+.admin-messages {
+  margin: 1vh 0;
+}
+
