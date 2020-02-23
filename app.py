@@ -48,15 +48,15 @@ def post_install():
     if not team_id:
         return redirect('/')
     else:
-        return redirect(url_for('register', team_id=team_id))
+        return register_team(team_id)
 
 @app.route('/')
 def index():
     """Return homepage"""
     return render_template('index.html')
 
-@app.route('/register/<team_id>')
-def get(team_id):
+
+def register_team(team_id):
     return render_template('register.html', team_id=team_id)
 
 @app.route('/register/<team_id>', methods=["POST"])
@@ -65,12 +65,17 @@ def register(team_id):
     temp_code = request.form.get('password')
     room_code = team_id + "^" + temp_code
     
-    new_lobby = {
-        'team_id': team_id,
-        'password': temp_code
-    }
-    users.insert_one(new_lobby)
-    return redirect(url_for('authentication', code=room_code))
+    confession = confessions.find_one({'team_id': team_id})
+
+    if confession:
+        new_lobby = {
+            'team_id': team_id,
+            'password': temp_code
+        }
+        users.insert_one(new_lobby)
+        return redirect(url_for('authentication', code=room_code))
+    else:
+        return redirect()
 
 @app.route('/login', methods=["GET", "POST"])
 def login():
@@ -81,8 +86,6 @@ def login():
     if request.method == "POST":
         team_id = request.form.get('team_id')
         password = request.form.get('password')
-        
-        print("++++++++++++++", team_id, password)
         user = users.find_one({'team_id': team_id, 'password': password})
         if user:
             code = f"{team_id}^{password}"
@@ -93,6 +96,7 @@ def login():
 @app.route('/admin/<code>')
 def authentication(code):
     [team_id, password] = code.split("^", 1)
+    update_db(confessions, team_id)
     room = users.find_one({'team_id': team_id, 'password': password})
     if room:
         confession = confessions.find_one({'team_id':team_id})
@@ -125,11 +129,37 @@ def post_confessions(code):
 
 @app.route('/admin/<code>/settings', methods=['GET','POST'])
 def settings(code):
-    if request.method == 'GET':
-        return render_template('settings.html',code=code)
+    [team_id, password] = code.split("^", 1)
+    
+    room = users.find_one({'team_id': team_id, 'password': password})
+    if room:
+        if request.method == 'GET':
+            confession = confessions.find_one({'team_id':team_id})
+            team = {
+                'team_name': confession['team_name'],
+                'team_id': team_id,
+                'post_to': confession['post_channels'].keys()
+            }
+            return render_template('settings.html', team=team, code=code)
 
-    if request.method == 'POST':
-        pass
+        if request.method == 'POST':
+            form = request.form.to_dict()
+            room['password'] = form['new_password']
+            users.update_one({
+                'team_id': team_id
+            }, {
+                "$set": confession
+            })
+            confession['post_to'] = form['post_select']
+            confessions.update_one({
+                'team_id': team_id
+            }, {
+                "$set": confession
+            })
+            return redirect('/')
+    else:
+        # make error.html
+        return redirect('/')
 
 @app.route("/logout")
 def logout():
@@ -138,12 +168,6 @@ def logout():
     return redirect('/')
 
 
-"""
-@app.route('/auth')
-def setup():
-    # authentication, adding app to slack, writing data to db happens here
-    return 'Hello, world'
-"""
 
 
 if __name__ == '__main__':

@@ -7,7 +7,7 @@
 {%endblock%}
 
 {% block content %}
-<div class="container mt-5">
+<div class="container">
     <div class="row">
         <div class="col-lg-4 pb-5">
             <!-- Account Sidebar-->
@@ -24,24 +24,23 @@
         </div>
         <!-- Profile Settings-->
         <div class="col-lg-8 pb-5">
-            <form class="row">
-                </div>
+            <form class="row" action="/admin/{{code}}/settings" method="POST">
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="CurrentPassword">Current Password</label>
-                        <input class="form-control" type="text" id="CurrentPassword" placeholder="current Password" required>
+                        <input class="form-control" type="text" id="CurrentPassword" placeholder="Current Password" required>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="account-pass">New Password</label>
-                        <input class="form-control" type="password" id="account-pass">
+                        <input class="form-control" type="password" name="new_password" id="account-pass" placeholder="New Password">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="account-confirm-pass">Confirm Password</label>
-                        <input class="form-control" type="password" id="account-confirm-pass">
+                        <input class="form-control" type="password" name="new_password2" id="account-confirm-pass" placeholder="Confirm Password">
                     </div>
                 </div>
                 <div class="col-12">
@@ -52,15 +51,14 @@
                             <div class="input-group-prepend">
                               <label class="input-group-text" for="inputGroupSelect01">Post To:</label>
                             </div>
-                            <select class="custom-select" id="inputGroupSelect01">
-                              <option selected>Choose...</option>
-                              <option value="1"> Channel One</option>
-                              <option value="2">Channel Two</option>
-                              <option value="3">Channel Three</option>
+                            <select name="post_select" class="custom-select" id="inputGroupSelect01">
+                                {%for post_options in team['post_to']%}
+                                <option>{{post_options}}</option>
+                                {% endfor %}
                             </select>
                           </div>
 
-                        <button class="btn btn-style-1 btn-primary" type="button" data-toast="" data-toast-position="topRight" data-toast-type="success" data-toast-icon="fe-icon-check-circle" data-toast-title="Success!" data-toast-message="Your profile updated successfuly.">Update Profile</button>
+                        <button class="btn btn-style-1 btn-primary" type="submit" data-toast="" data-toast-position="topRight" data-toast-type="success" data-toast-icon="fe-icon-check-circle" data-toast-title="Success!" data-toast-message="Your profile updated successfuly.">Update Profile</button>
                     </div>
                 </div>
             </form>

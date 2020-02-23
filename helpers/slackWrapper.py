@@ -4,7 +4,7 @@ import slack
 import requests
 from pymongo import MongoClient
 
-client_id = os.environ["SLACK_CLIENT_ID"]
+client_id =  os.environ["SLACK_CLIENT_ID"]
 client_secret = os.environ["SLACK_CLIENT_SECRET"]
 
 """

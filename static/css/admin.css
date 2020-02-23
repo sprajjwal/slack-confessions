@@ -12,10 +12,10 @@
   align-content: center;
   padding: 15px;
 }
+.admin-container {
+  min-height: 80vh;
+}
 
-/* .card-title {
-  text-align:right;
-} */
 
 #card-buttons {
   float: right;
