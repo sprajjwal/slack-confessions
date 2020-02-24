@@ -22,7 +22,7 @@ app = Flask(__name__)
 client_id = os.environ["SLACK_CLIENT_ID"]
 client_secret = os.environ["SLACK_CLIENT_SECRET"]
 oauth_scope = 'bot, channels:read, chat:write:bot, im:read, im:history' #os.environ["SLACK_BOT_SCOPE"]
-network = "http://slack-confessions.herokuapp.com"
+network = "https://slack-confessions.herokuapp.com"
 
 # edit this function for job scheduling
 def scheduled_daily():
