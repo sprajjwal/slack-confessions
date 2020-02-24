@@ -44,7 +44,6 @@ def finish_auth(db, auth_code, post_to='random'):
     # An empty string is a valid token for this request
     client = slack.WebClient(token="")
 
-    print("-______", client_id)
     # Request the auth tokens from Slack
     response = client.oauth_access(
         client_id=client_id,
@@ -74,8 +73,6 @@ def finish_auth(db, auth_code, post_to='random'):
         }
         db.insert_one(team)
         update_db(db, team_id)
-        print("_____________")
-        print(team_id)
         return team_id
 
 
@@ -122,13 +119,14 @@ def get_messages_from_channel(bot_access_token, channel, ts=0):
     if len(res['messages']) == 0:
         return None
     for msg in res['messages']:
-        messages = [{
-        'ts': msg['ts'],
-        'body': msg['text'],
-        'posted': False,
-        'approved': False,
-        'denied': False
-        }] + messages
+        if msg['text']:
+            messages = [{
+            'ts': msg['ts'],
+            'body': msg['text'],
+            'posted': False,
+            'approved': False,
+            'denied': False
+            }] + messages
     return messages
 
 def update_db(db, team_id):
@@ -143,7 +141,8 @@ def update_db(db, team_id):
             msgs = get_messages_from_channel(team['bot_access_token'], c, team["im_channels"][c])
         if msgs is not None:
             team["messages"] += msgs
-            team['im_channels'][c] = msgs[len(msgs)-1]['ts']
+            if msgs:
+                team['im_channels'][c] = msgs[len(msgs)-1]['ts']
     db.update_one({
         'team_id': team['team_id']
     }, {
@@ -153,11 +152,10 @@ def update_db(db, team_id):
 def get_message(db, team_id):
     """ gets an approved message from the database to post on slack,
     update it's posted to True.
-    Returns False if there are no approved confessions that need to be posted"""
+    Returns False if there are no approved confess"""
     team = db.find_one({'team_id': team_id})
-    for i in range(len(team["messages"]) - 1, 0, -1):
+    for i in range(len(team["messages"]) - 1):
         m = team["messages"][i]
-        print(m)
         if m["approved"] and m['posted'] == False and m['denied'] == False:
             team["messages"][i]['posted'] = True
             db.update_one({

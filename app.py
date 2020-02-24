@@ -4,6 +4,7 @@ from bson.objectid import ObjectId
 import os
 from helpers.slackWrapper import *
 from apscheduler.schedulers.background import BackgroundScheduler
+from helpers.dbms import post_to_slack, clear_denied
 
 """
 client = MongoClient()
@@ -21,16 +22,21 @@ app = Flask(__name__)
 client_id = os.environ["SLACK_CLIENT_ID"]
 client_secret = os.environ["SLACK_CLIENT_SECRET"]
 oauth_scope = 'bot, channels:read, chat:write:bot, im:read, im:history' #os.environ["SLACK_BOT_SCOPE"]
-network = "http://127.0.0.1:5000"
+network = "http://slack-confessions.herokuapp.com"
 
 # edit this function for job scheduling
-def scheduled_jobs():
-    print('I am working...')
+def scheduled_daily():
+    print("in here")
+    post_to_slack(confessions)
+
+def scheduled_bi_weekly():
+    clear_denied(confessions)
 
 # Task Scheduler
 scheduler = BackgroundScheduler()
 if os.environ.get("WERKZEUG_RUN_MAIN") == "true":
-    job = scheduler.add_job(scheduled_jobs, 'interval', minutes=1) #set minutes here
+    job = scheduler.add_job(scheduled_jobs, 'interval', minutes=1440) #set minutes here
+    job1 = scheduler.add_job(scheduled_jobs, 'interval', minutes=4320)
 scheduler.start()
 
 # notes:
