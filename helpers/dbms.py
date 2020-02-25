@@ -17,7 +17,7 @@ def clear_denied(db):
   all = db.find({})
   for workplace in all:
     for index in range(len(workplace['messages']) - 1):
-      if workplace['messages'][index]['denied'] == True:
+      if workplace['messages'][index]['denied'] or workplace['messages'][index]['posted']:
         del workplace['messages'][index]
     db.update_one({
         'team_id': workplace['team_id']
