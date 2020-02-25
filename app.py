@@ -35,7 +35,7 @@ def scheduled_bi_weekly():
 # Task Scheduler
 scheduler = BackgroundScheduler()
 if os.environ.get("WERKZEUG_RUN_MAIN") == "true":
-    job = scheduler.add_job(scheduled_daily, 'interval', minutes=720) #set minutes here update later to post less frequently
+    job = scheduler.add_job(scheduled_daily, 'interval', minutes=60) #set minutes here update later to post less frequently
     job1 = scheduler.add_job(scheduled_bi_weekly, 'interval', minutes=4320)
 scheduler.start()
 
