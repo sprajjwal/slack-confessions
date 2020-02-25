@@ -4,8 +4,8 @@ import slack
 import requests
 from pymongo import MongoClient
 
-client_id =  os.environ["SLACK_CLIENT_ID"]
-client_secret = os.environ["SLACK_CLIENT_SECRET"]
+client_id =  '922216111702.963812309300'#os.environ["SLACK_CLIENT_ID"]
+client_secret = 'd60f987d633a56a6321a5a1996602652' #os.environ["SLACK_CLIENT_SECRET"]
 
 """
     This file handles the confessions stored in MongDB. 
@@ -154,7 +154,7 @@ def get_message(db, team_id):
     update it's posted to True.
     Returns False if there are no approved confess"""
     team = db.find_one({'team_id': team_id})
-    for i in range(len(team["messages"]) - 1):
+    for i in range(len(team["messages"])):
         m = team["messages"][i]
         if m["approved"] and m['posted'] == False and m['denied'] == False:
             team["messages"][i]['posted'] = True

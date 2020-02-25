@@ -19,8 +19,8 @@ confessions = db.confessions
 
 app = Flask(__name__)
 
-client_id = os.environ["SLACK_CLIENT_ID"]
-client_secret = os.environ["SLACK_CLIENT_SECRET"]
+client_id = '922216111702.963812309300' #os.environ["SLACK_CLIENT_ID"]
+client_secret = 'd60f987d633a56a6321a5a1996602652' #os.environ["SLACK_CLIENT_SECRET"]
 oauth_scope = 'bot, channels:read, chat:write:bot, im:read, im:history' #os.environ["SLACK_BOT_SCOPE"]
 network = "https://slack-confessions.herokuapp.com"
 
@@ -35,8 +35,8 @@ def scheduled_bi_weekly():
 # Task Scheduler
 scheduler = BackgroundScheduler()
 if os.environ.get("WERKZEUG_RUN_MAIN") == "true":
-    job = scheduler.add_job(scheduled_daily, 'interval', minutes=60) #set minutes here update later to post less frequently
-    job1 = scheduler.add_job(scheduled_bi_weekly, 'interval', minutes=4320)
+    job = scheduler.add_job(scheduled_daily, 'cron', hour='*', minute=54) #set minutes here update later to post less frequently
+    job1 = scheduler.add_job(scheduled_bi_weekly, 'cron',day='*/3',hour=0, minute=50)
 scheduler.start()
 
 # notes:
