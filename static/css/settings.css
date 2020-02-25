@@ -173,3 +173,15 @@ a.list-group-item, .list-group-item-action {
   background-color: transparent;
   content: '';
 }
+
+#error-message {
+  display: none;
+  padding-bottom: 5px;
+  color: red;
+}
+
+#carrot-message {
+  display: none;
+  padding-bottom: 5px;
+  color: red;
+}

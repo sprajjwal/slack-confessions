@@ -35,8 +35,8 @@ def scheduled_bi_weekly():
 # Task Scheduler
 scheduler = BackgroundScheduler()
 if os.environ.get("WERKZEUG_RUN_MAIN") == "true":
-    job = scheduler.add_job(scheduled_jobs, 'interval', minutes=1440) #set minutes here
-    job1 = scheduler.add_job(scheduled_jobs, 'interval', minutes=4320)
+    job = scheduler.add_job(scheduled_daily, 'interval', minutes=720) #set minutes here update later to post less frequently
+    job1 = scheduler.add_job(scheduled_bi_weekly, 'interval', minutes=4320)
 scheduler.start()
 
 # notes:
@@ -149,6 +149,7 @@ def settings(code):
             return render_template('settings.html', team=team, code=code)
 
         if request.method == 'POST':
+            return
             form = request.form.to_dict()
             room['password'] = form['new_password']
             users.update_one({

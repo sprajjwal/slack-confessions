@@ -24,24 +24,28 @@
         </div>
         <!-- Profile Settings-->
         <div class="col-lg-8 pb-5">
-            <form class="row" action="/admin/{{code}}/settings" method="POST">
-                <div class="col-md-6">
+            <form class="row" action="/admin/{{code}}/settings" id="main-form" method="POST">
+                <div class="col-md-12">
                     <div class="form-group">
                         <label for="CurrentPassword">Current Password</label>
-                        <input class="form-control" type="text" id="CurrentPassword" placeholder="Current Password" required>
+                        <input class="form-control" type="password" id="CurrentPassword" placeholder="Current Password" required>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="account-pass">New Password</label>
-                        <input class="form-control" type="password" name="new_password" id="account-pass" placeholder="New Password">
+                        <input class="form-control" type="password" name="new_password" id="password1" placeholder="New Password">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="account-confirm-pass">Confirm Password</label>
-                        <input class="form-control" type="password" name="new_password2" id="account-confirm-pass" placeholder="Confirm Password">
+                        <input class="form-control" type="password" name="new_password2" id="password2" placeholder="Confirm Password">
                     </div>
+                </div>
+                <div class="col-md-6">
+                    <small id="error-message">Passwords don't match</small>
+                    <small id="carrot-message">Don't user '^' in your password.</small>
                 </div>
                 <div class="col-12">
                     <hr class="mt-2 mb-3">
@@ -57,7 +61,6 @@
                                 {% endfor %}
                             </select>
                           </div>
-
                         <button class="btn btn-style-1 btn-primary" type="submit" data-toast="" data-toast-position="topRight" data-toast-type="success" data-toast-icon="fe-icon-check-circle" data-toast-title="Success!" data-toast-message="Your profile updated successfuly.">Update Profile</button>
                     </div>
                 </div>
@@ -68,3 +71,7 @@
 
 
 {%endblock%}
+
+{% block script %}
+<script src="/static/js/register.js"></script>
+{% endblock %}

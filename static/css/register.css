@@ -114,6 +114,7 @@ body {
     font-family: 'Bitter', serif;
     font-size: 2rem; 
     font-weight: 300;
+    margin-bottom: 0;
 }
 
 
@@ -121,5 +122,20 @@ body {
     margin-top: 20vh;
 }
 
-    
-    
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#error-message {
+    display: none;
+    padding-bottom: 5px;
+    color: red;
+}
+
+#carrot-message {
+    display: none;
+    padding-bottom: 5px;
+    color: red;
+}
