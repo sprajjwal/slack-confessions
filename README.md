@@ -6,43 +6,33 @@
   - [Author(s)](#authors)
   - [Acknowledgements](#acknowledgements)
 
-<a name="start"></a>
-
 ## Getting Started
 
-<a name="pre"></a>
 <h3>Prerequisites</h3>
-add some info here
 
-<a name="env"></a>
 <h4>Environment</h4>
-Start up by installing the requirements using 
-    
+Start up by installing the requirements using:
+
+```python    
     pip3 install -r requirements.txt
-
-How to use:
-some information...
-
-<a name="install"></a>
-<h3>Installing</h3>
-
-<a name="clone"></a>
+```
 
 <h4>Cloning Repo</h4>
+Run:
 
+```python
     * git clone https://github.com/sprajjwal/slack-confessions
     * rm -rf .git
     * git init
     * git remote add origin https://github.com/YOUR_GITHUB_USERNAME/slack-confessions
-
-<a name="built"></a>
+```
 
 ## Built With
+
 * Flask
 * MongoDB
 * Slack API
-
-<a name="author(s)"></a>
+* Heroku
 
 ## Author(s)
 
@@ -50,8 +40,6 @@ some information...
 * Franklin Phan - <i>Initial work</i> - https://github.com/franklin-phan
 * Padyn Riddell - <i>Initial work</i> - https://github.com/squeaky1273
 * Xing Ye - <i>Initial work</i> - https://github.com/xingY97
-
-<a name="credit"></a>
 
 ## Acknowledgements
 add some info here
