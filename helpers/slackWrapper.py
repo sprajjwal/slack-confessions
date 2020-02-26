@@ -4,8 +4,8 @@ import slack
 import requests
 from pymongo import MongoClient
 
-client_id =  '922216111702.963812309300'#os.environ["SLACK_CLIENT_ID"]
-client_secret = 'd60f987d633a56a6321a5a1996602652' #os.environ["SLACK_CLIENT_SECRET"]
+client_id =  os.environ["SLACK_CLIENT_ID"]
+client_secret = os.environ["SLACK_CLIENT_SECRET"]
 
 """
     This file handles the confessions stored in MongDB. 

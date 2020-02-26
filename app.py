@@ -3,8 +3,7 @@ from pymongo import MongoClient
 from bson.objectid import ObjectId
 import os
 from helpers.slackWrapper import *
-from apscheduler.schedulers.background import BackgroundScheduler
-from helpers.dbms import post_to_slack, clear_denied
+
 
 """
 client = MongoClient()
@@ -19,25 +18,10 @@ confessions = db.confessions
 
 app = Flask(__name__)
 
-client_id = '922216111702.963812309300' #os.environ["SLACK_CLIENT_ID"]
-client_secret = 'd60f987d633a56a6321a5a1996602652' #os.environ["SLACK_CLIENT_SECRET"]
+client_id = os.environ["SLACK_CLIENT_ID"]
+client_secret = os.environ["SLACK_CLIENT_SECRET"]
 oauth_scope = 'bot, channels:read, chat:write:bot, im:read, im:history' #os.environ["SLACK_BOT_SCOPE"]
 network = "https://slack-confessions.herokuapp.com"
-
-# edit this function for job scheduling
-def scheduled_daily():
-    print("in here")
-    post_to_slack(confessions)
-
-def scheduled_bi_weekly():
-    clear_denied(confessions)
-
-# Task Scheduler
-scheduler = BackgroundScheduler()
-if os.environ.get("WERKZEUG_RUN_MAIN") == "true":
-    job = scheduler.add_job(scheduled_daily, 'cron', hour='*', minute=54) #set minutes here update later to post less frequently
-    job1 = scheduler.add_job(scheduled_bi_weekly, 'cron',day='*/3',hour=0, minute=50)
-scheduler.start()
 
 # notes:
 # Add this a tag for add to slack: <a href=f"https://slack.com/oauth/authorize?scope={ oauth_scope }&client_id={ client_id }&redirect_uri={network}/finish_auth">Add to Slack</a>
