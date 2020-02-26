@@ -5,7 +5,7 @@
 {%endblock%}
 
 {% block content %}
-<header class="masthead">
+<header class="masthead" id="masthead">
   <div class="container h-100">
     <div class="row h-100">
       <div class="col-lg-7 my-auto">
@@ -15,20 +15,24 @@
         </div>
       </div>
       <div class="col-lg-5 my-auto">
+          <div data-aos="zoom-in-up" data-aos-easing="linear" data-aos-duration="2000">
           <img src="/static/img/logo.png" class="img-fluid" alt="" id="features-logo">
+          </div>
       </div>
     </div>
   </div>
 </header>
 
   <section class="download bg-primary text-center" id="download">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8 mx-auto">
-          <h2 class="section-heading">Start Confessing!</h2>
-          <p>Our app is available on any Slack Workplace! Add now to get started!</p>
-          <div class="badges">
-            <a class="badge-link" href="/begin_auth"><img src="/static/img/add-to-slack.png" alt=""></a>
+    <div data-aos="zoom-in" data-aos-delay="200" data-aos-duration="2000">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 mx-auto">
+            <h2 class="section-heading">Start Confessing!</h2>
+            <p>Our app is available on any Slack Workplace! Add now to get started!</p>
+            <div class="badges">
+              <a class="badge-link" href="/begin_auth"><img src="/static/img/add-to-slack.png" alt=""></a>
+            </div>
           </div>
         </div>
       </div>
@@ -39,45 +43,49 @@
     <div class="container">
       <div class="section-heading text-center">
         <h2>Slack Confessions Features</h2>
-        <p class="text-muted">Check out what we put into our project!</p>
+        <p class="text-white">Check out what we put into our project!</p>
         <hr>
       </div>
       <div class="row">
-        <div class="col-lg-4 my-auto mx-auto">
-            <img src="/static/img/logo.png" class="img-fluid" alt="" id="features-logo">
+          <div class="col-lg-4 my-auto mx-auto">
+            <div data-aos="fade-right" data-aos-duration="2000">
+              <img src="/static/img/logo.png" class="img-fluid" alt="" id="features-logo">
+          </div>
         </div>
-        <div class="col-lg-8 my-auto">
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col-lg-6">
-                <div class="feature-item">
-                  <i class="icon-people text-primary"></i>
-                  <h3>Public Anonymity</h3>
-                  <p class="text-muted">Message the Slackbot and post with public anonymity!</p>
+          <div class="col-lg-8 my-auto">
+            <div data-aos="fade-left" data-aos-duration="2000">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="feature-item">
+                      <i class="icon-people text-primary"></i>
+                      <h3>Public Anonymity</h3>
+                      <p class="text-white">Message the Slackbot and post with public anonymity!</p>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="feature-item">
+                      <i class="icon-heart text-primary"></i>
+                      <h3>Speak from the Heart</h3>
+                      <p class="text-white">Air concerns, grievances, or even complements out in the open!</p>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="feature-item">
+                      <i class="icon-eye text-primary"></i>
+                      <h3>Admin Access</h3>
+                      <p class="text-white">Let users post anywhere from freely to pre-approving posts!</p>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="feature-item">
+                      <i class="icon-lock-open text-primary"></i>
+                      <h3>Open Source</h3>
+                      <p class="text-white">Our project is open source so any workplace can use it for free!</p>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div class="col-lg-6">
-                <div class="feature-item">
-                  <i class="icon-heart text-primary"></i>
-                  <h3>Speak from the Heart</h3>
-                  <p class="text-muted">Air concerns, grievances, or even complements out in the open!</p>
-                </div>
-              </div>
-              <div class="col-lg-6">
-                <div class="feature-item">
-                  <i class="icon-eye text-primary"></i>
-                  <h3>Admin Access</h3>
-                  <p class="text-muted">Let users post anywhere from freely to pre-approving posts!</p>
-                </div>
-              </div>
-              <div class="col-lg-6">
-                <div class="feature-item">
-                  <i class="icon-lock-open text-primary"></i>
-                  <h3>Open Source</h3>
-                  <p class="text-muted">Our project is open source so any workplace can use it for free!</p>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -97,6 +105,7 @@
         <div class="col-lg-12">
           <ul class="timeline">
             <li>
+              <div data-aos="fade" data-aos-duration="2000">
               <div class="timeline-image">
                 <img class="rounded-circle img-fluid" src="/static/img/about/1.jpg" alt="">
               </div>
@@ -106,25 +115,29 @@
                   <h4 class="subheading">Brainstorming</h4>
                 </div>
                 <div class="timeline-body">
-                  <p class="text-muted">User interviews and journeys were conducted. The wireframes and skeletons of the project were conceived. Roles were distibruted and the final idea of the product was conceptualized.</p>
+                  <p class="text-white">User interviews and journeys were conducted. The wireframes and skeletons of the project were conceived. Roles were distibruted and the final idea of the product was conceptualized.</p>
                 </div>
+              </div>
               </div>
             </li>
             <li class="timeline-inverted">
-              <div class="timeline-image">
-                <img class="rounded-circle img-fluid" src="/static/img/about/2.jpg" alt="">
-              </div>
-              <div class="timeline-panel">
-                <div class="timeline-heading">
-                  <h4>Week 2/3</h4>
-                  <h4 class="subheading">An Agency is Born</h4>
+              <div data-aos="fade-left" data-aos-duration="2000">
+                <div class="timeline-image">
+                  <img class="rounded-circle img-fluid" src="/static/img/about/2.jpg" alt="">
                 </div>
-                <div class="timeline-body">
-                  <p class="text-muted">Hands got dirty as the real work began. Implementation for the backend routes and the use of the Slack api began.</p>
+                <div class="timeline-panel">
+                  <div class="timeline-heading">
+                    <h4>Week 2/3</h4>
+                    <h4 class="subheading">An Agency is Born</h4>
+                  </div>
+                  <div class="timeline-body">
+                    <p class="text-white">Hands got dirty as the real work began. Implementation for the backend routes and the use of the Slack api began.</p>
+                  </div>
                 </div>
               </div>
             </li>
             <li>
+                <div data-aos="fade-right" data-aos-duration="2000">
               <div class="timeline-image">
                 <img class="rounded-circle img-fluid" src="/static/img/about/3.jpg" alt="">
               </div>
@@ -134,11 +147,13 @@
                   <h4 class="subheading">Transition to Full Service</h4>
                 </div>
                 <div class="timeline-body">
-                  <p class="text-muted">All of the necessary routes were implemented. The look of the site was coming together.</p>
+                  <p class="text-white">All of the necessary routes were implemented. The look of the site was coming together.</p>
                 </div>
+              </div>
               </div>
             </li>
             <li class="timeline-inverted">
+              <div data-aos="fade-left" data-aos-duration="2000">
               <div class="timeline-image">
                 <img class="rounded-circle img-fluid" src="/static/img/about/4.jpg" alt="">
               </div>
@@ -148,15 +163,18 @@
                   <h4 class="subheading">Presentation</h4>
                 </div>
                 <div class="timeline-body">
-                  <p class="text-muted">Finishing touches were made before the final pitch that needed to be made.</p>
+                  <p class="text-white">Finishing touches were made before the final pitch that needed to be made.</p>
                 </div>
+              </div>
               </div>
             </li>
             <li class="timeline-inverted">
-              <div class="timeline-image">
-                <h4>Be Part
-                  <br>Of Our
-                  <br>Story!</h4>
+              <div data-aos="fade" data-aos-duration="2000">
+                <div class="timeline-image">
+                  <h4>Be Part
+                    <br>Of Our
+                    <br>Story!</h4>
+                </div>
               </div>
             </li>
           </ul>
@@ -164,6 +182,7 @@
       </div>
     </div>
   </section>
+
  <!-- Team -->
  <section class="bg-light page-section" id="team">
   <div class="container">
@@ -176,15 +195,11 @@
     <div class="row">
       <div class="col-sm-3">
         <div class="team-member">
-          <img class="mx-auto rounded-circle" src="/static/img/team/1.jpg" alt="">
+            <div data-aos="fade-up" data-aos-duration="1500">
+          <img class="mx-auto rounded-circle" src="/static/img/team/logo-blue.png" alt="">
           <h4>Shashwat Prajjwal</h4>
           <p class="text-muted">Project Manager</p>
           <ul class="list-inline social-buttons">
-            <li class="list-inline-item">
-              <a href="#">
-                <i class="fas fa-id-card"></i>
-              </a>
-            </li>
             <li class="list-inline-item">
               <a href="https://github.com/sprajjwal"
               target="_blank">
@@ -197,20 +212,22 @@
                 <i class="fab fa-linkedin-in"></i>
               </a>
             </li>
+            <li class="list-inline-item">
+                <a href="https://github.com/sprajjwal">
+                  <i class="fas fa-id-card"></i>
+                </a>
+              </li>
           </ul>
+        </div>
         </div>
       </div>
       <div class="col-sm-3">
         <div class="team-member">
-          <img class="mx-auto rounded-circle" src="/static/img/team/2.jpg" alt="">
+            <div data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300">
+          <img class="mx-auto rounded-circle" src="/static/img/team/logo-green.png" alt="">
           <h4>Padyn Riddell</h4>
           <p class="text-muted">Backend</p>
           <ul class="list-inline social-buttons">
-            <li class="list-inline-item">
-              <a href="#">
-                <i class="fas fa-id-card"></i>
-              </a>
-            </li>
             <li class="list-inline-item">
               <a href="https://github.com/squeaky1273"
               target="_blank">
@@ -223,20 +240,22 @@
                 <i class="fab fa-linkedin-in"></i>
               </a>
             </li>
+            <li class="list-inline-item">
+                <a href="https://www.makeschool.com/portfolio/Padyn-Riddell">
+                  <i class="fas fa-id-card"></i>
+                </a>
+              </li>
           </ul>
         </div>
       </div>
+    </div>
       <div class="col-sm-3">
         <div class="team-member">
-          <img class="mx-auto rounded-circle" src="/static/img/team/2.jpg" alt="">
+          <div data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
+          <img class="mx-auto rounded-circle" src="/static/img/team/logo-red.png" alt="">
           <h4>Franklin Phan</h4>
           <p class="text-muted">Frontend</p>
           <ul class="list-inline social-buttons">
-            <li class="list-inline-item">
-              <a href="#">
-                <i class="fas fa-id-card"></i>
-              </a>
-            </li>
             <li class="list-inline-item">
               <a href="https://github.com/franklin-phan"
               target="_blank">
@@ -249,20 +268,22 @@
                 <i class="fab fa-linkedin-in"></i>
               </a>
             </li>
+            <li class="list-inline-item">
+                <a href="https://www.makeschool.com/portfolio/Franklin-Phan">
+                  <i class="fas fa-id-card"></i>
+                </a>
+              </li>
           </ul>
         </div>
       </div>
+      </div>
       <div class="col-sm-3">
         <div class="team-member">
-          <img class="mx-auto rounded-circle" src="/static/img/team/3.jpg" alt="">
+            <div data-aos="fade-up" data-aos-duration="1500" data-aos-delay="900">
+          <img class="mx-auto rounded-circle" src="/static/img/team/logo-yellow.png" alt="">
           <h4>Xing Ye</h4>
           <p class="text-muted">Frontend</p>
           <ul class="list-inline social-buttons">
-            <li class="list-inline-item">
-              <a href="#">
-                <i class="fas fa-id-card"></i>
-              </a>
-            </li>
             <li class="list-inline-item">
               <a href="https://github.com/xingY97"
               target="_blank">
@@ -275,9 +296,15 @@
                 <i class="fab fa-linkedin-in"></i>
               </a>
             </li>
+            <li class="list-inline-item">
+                <a href="https://www.makeschool.com/portfolio/Xing-Ye">
+                  <i class="fas fa-id-card"></i>
+                </a>
+              </li>
           </ul>
         </div>
       </div>
+    </div>
     </div>
     <div class="row">
       <!-- <div class="col-lg-8 mx-auto text-center">
@@ -287,4 +314,28 @@
   </div>
 </section>
 
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+<script src="/static/js/shapes.js"></script>
+
+<script src="/static/js/three.r95.min.js"></script>
+<script src="/static/js/vanta.waves.min.js"></script>
+<script>
+VANTA.WAVES({
+  el: "#masthead",
+  mouseControls: true,
+  touchControls: true,
+  minHeight: 200.00,
+  minWidth: 200.00,
+  scale: 1.00,
+  scaleMobile: 1.00,
+  color: 0x2825,
+  shininess: 36.00,
+  waveHeight: 18.00,
+  waveSpeed: 0.70,
+  zoom: 0.96
+})
+</script>
 {%endblock%}
