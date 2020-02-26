@@ -141,7 +141,7 @@ def update_db(db, team_id):
             msgs = get_messages_from_channel(team['bot_access_token'], c, team["im_channels"][c])
         if msgs is not None:
             team["messages"] += msgs
-            if msgs:
+            if msgs != '':
                 team['im_channels'][c] = msgs[len(msgs)-1]['ts']
     db.update_one({
         'team_id': team['team_id']

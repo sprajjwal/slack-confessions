@@ -22,6 +22,7 @@ client_id = os.environ["SLACK_CLIENT_ID"]
 client_secret = os.environ["SLACK_CLIENT_SECRET"]
 oauth_scope = 'bot, channels:read, chat:write:bot, im:read, im:history' #os.environ["SLACK_BOT_SCOPE"]
 network = "https://slack-confessions.herokuapp.com"
+# network = "http://127.0.0.1:5000"
 
 # notes:
 # Add this a tag for add to slack: <a href=f"https://slack.com/oauth/authorize?scope={ oauth_scope }&client_id={ client_id }&redirect_uri={network}/finish_auth">Add to Slack</a>
