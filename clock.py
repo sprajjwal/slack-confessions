@@ -1,6 +1,7 @@
 from apscheduler.schedulers.blocking import BlockingScheduler
 from helpers.dbms import post_to_slack, clear_denied
 import os
+from pymongo import MongoClient
 
 host = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/slack-confessions')
 client = MongoClient(host=f'{host}?retryWrites=false')
