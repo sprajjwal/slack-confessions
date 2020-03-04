@@ -545,7 +545,7 @@ footer ul li a:hover, footer ul li a:focus, footer ul li a:active, footer ul li 
   color: white;
   border: 7px solid #e9ecef;
   border-radius: 100%;
-  background-color: #fed136;
+  background-color: rgb(136, 121, 226);
 }
 
 .timeline > li .timeline-image h4 {
