@@ -180,16 +180,26 @@
           </ul>
         </div>
       </div>
+      <div class="waveWrapper waveAnimation">
+          <div class="waveWrapperInner bgTop">
+            <div class="wave waveTop" style="background-image: url(/static/img/newLogo.png)"></div>
+          </div>
+          <div class="waveWrapperInner bgMiddle">
+            <div class="wave waveMiddle" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-mid.png')"></div>
+          </div>
+          <div class="waveWrapperInner bgBottom">
+            <div class="wave waveBottom" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-bot.png')" ></div>
+          </div>
+        </div>
     </div>
+   
   </section>
-
  <!-- Team -->
- <section class="bg-light page-section" id="team">
+ <section class="page-section team" id="team">
   <div class="container">
     <div class="row">
       <div class="col-lg-12 text-center">
-        <h2 class="section-heading text-uppercase">Our Amazing Team</h2>
-        <!-- <h3 class="section-subheading text-muted">Check out their profiles.</h3> -->
+        <h2 class="section-heading text-uppercase text-white">Our Amazing Team</h2>
       </div>
     </div>
     <div class="row">
@@ -197,8 +207,8 @@
         <div class="team-member">
             <div data-aos="fade-up" data-aos-duration="1500">
           <img class="mx-auto rounded-circle" src="/static/img/team/logo-blue.png" alt="">
-          <h4>Shashwat Prajjwal</h4>
-          <p class="text-muted">Project Manager, API implementation Lead</p>
+          <h4 class="text-white">Shashwat Prajjwal</h4>
+          <p class="text-white">Project Manager, API Implementation Lead</p>
           <ul class="list-inline social-buttons">
             <li class="list-inline-item">
               <a href="https://github.com/sprajjwal"
@@ -226,8 +236,8 @@
         <div class="team-member">
             <div data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300">
           <img class="mx-auto rounded-circle" src="/static/img/team/logo-green.png" alt="">
-          <h4>Padyn Riddell</h4>
-          <p class="text-muted">Backend Lead</p>
+          <h4 class="text-white">Padyn Riddell</h4>
+          <p class="text-white">Backend Lead</p>
           <ul class="list-inline social-buttons">
             <li class="list-inline-item">
               <a href="https://github.com/squeaky1273"
@@ -255,8 +265,8 @@
         <div class="team-member">
           <div data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
           <img class="mx-auto rounded-circle" src="/static/img/team/logo-red.png" alt="">
-          <h4>Franklin Phan</h4>
-          <p class="text-muted">Frontend, Design Lead</p>
+          <h4 class="text-white">Franklin Phan</h4>
+          <p class="text-white">Frontend, Design Lead</p>
           <ul class="list-inline social-buttons">
             <li class="list-inline-item">
               <a href="https://github.com/franklin-phan"
@@ -284,8 +294,8 @@
         <div class="team-member">
             <div data-aos="fade-up" data-aos-duration="1500" data-aos-delay="900">
           <img class="mx-auto rounded-circle" src="/static/img/team/logo-yellow.png" alt="">
-          <h4>Xing Ye</h4>
-          <p class="text-muted">Frontend Lead</p>
+          <h4 class="text-white">Xing Ye</h4>
+          <p class="text-white">Frontend Lead</p>
           <ul class="list-inline social-buttons">
             <li class="list-inline-item">
               <a href="https://github.com/xingY97"
@@ -310,14 +320,15 @@
       </div>
     </div>
     </div>
-    <div class="row">
-      <!-- <div class="col-lg-8 mx-auto text-center">
-        <p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
-      </div> -->
     </div>
   </div>
 </section>
-
+<!-- <div class="container demo">
+     <div id="large-header" class="large-header">
+        <canvas id="demo-canvas"></canvas>
+        <h4 class="text-white">oooo</h4>
+  </div>
+</div> -->
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 <script>
   AOS.init();
@@ -326,6 +337,11 @@
 
 <script src="/static/js/three.r95.min.js"></script>
 <script src="/static/js/vanta.waves.min.js"></script>
+<!-- Space background -->
+<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/499416/TweenLite.min.js"></script>
+<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/499416/EasePack.min.js"></script>
+<script src="/static/js/mousemove.js"></script>
+
 <script>
 VANTA.WAVES({
   el: "#masthead",
