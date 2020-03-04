@@ -39,7 +39,26 @@
     </div>
   </section>
 
-  <section class="features" id="features">
+  <section class="features area" id="features">
+      <ul class="circles">
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+  </ul>
     <div class="container">
       <div class="section-heading text-center">
         <h2>Slack Confessions Features</h2>
@@ -94,9 +113,10 @@
 
   <!-- About -->
   <section class="page-section" id="about">
+    <div class="diag"></div>
     <div class="container">
       <div class="row">
-        <div class="col-lg-12 text-center">
+        <div class="col-lg-12 text-center" id="time-title">
           <h2 class="section-heading text-uppercase">Timeline</h2>
           <!-- <h3 class="section-subheading text-muted">You can use it to send anything to a specific slack channel without revealing who you are.</h3> -->
         </div>
@@ -181,9 +201,12 @@
         </div>
       </div>
       <div class="waveWrapper waveAnimation">
-          <div class="waveWrapperInner bgTop">
-            <div class="wave waveTop" style="background-image: url(/static/img/newLogo.png)"></div>
+          <div class="waveWrapperInner bgLogo">
+            <div class="wave waveLogo" style="background-image: url(/static/img/newLogo.png)"></div>
           </div>
+          <div class="waveWrapperInner bgTop">
+              <div class="wave waveTop" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-top.png')"></div>
+            </div>
           <div class="waveWrapperInner bgMiddle">
             <div class="wave waveMiddle" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-mid.png')"></div>
           </div>
@@ -196,6 +219,7 @@
   </section>
  <!-- Team -->
  <section class="page-section team" id="team">
+    <canvas id="stars"></canvas>
   <div class="container">
     <div class="row">
       <div class="col-lg-12 text-center">
@@ -323,12 +347,7 @@
     </div>
   </div>
 </section>
-<!-- <div class="container demo">
-     <div id="large-header" class="large-header">
-        <canvas id="demo-canvas"></canvas>
-        <h4 class="text-white">oooo</h4>
-  </div>
-</div> -->
+
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 <script>
   AOS.init();
@@ -338,9 +357,7 @@
 <script src="/static/js/three.r95.min.js"></script>
 <script src="/static/js/vanta.waves.min.js"></script>
 <!-- Space background -->
-<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/499416/TweenLite.min.js"></script>
-<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/499416/EasePack.min.js"></script>
-<script src="/static/js/mousemove.js"></script>
+<script src="/static/js/stars.js"></script>
 
 <script>
 VANTA.WAVES({
