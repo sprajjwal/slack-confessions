@@ -1,0 +1,35 @@
+{{#section 'header'}}
+    <title>Admin</title>
+    <link rel="stylesheet" href="/static/css/admin.css">
+{{/section}}
+
+<div class="container">
+    
+    <form action="/admin" class="form admin-form" method="POST">
+        <button type="submit" class="btn btn-success admin-button">Submit</button>
+        <div class="admin-messages">
+            {{#each messages }}
+                <div class="card text-white bg-info" >
+                    <div class="bg-dark admin-inner">
+                        <div class="card-body" id="card-body-69">
+                            <!-- <h5 class="card-title">{{msg.ts}} Hours Ago</h5> -->
+                            <p class="card-text">{{this.body}}</p>      
+                            <div class="form-check-inline" id="card-buttons">
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" name="opt-69 - 1" value="approved" {{#if this.approved}} checked {{/if}}>Approved
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" name="opt-69 - 1" value="denied" {{#if this.denied}} checked {{/if }}>Deny
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+    </form>
+</div>

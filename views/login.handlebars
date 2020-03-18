@@ -1,0 +1,46 @@
+    
+{{#section 'header'}}
+    <title>Slack Confessions Sign Up</title>
+    <!-- <link href="slack-confessions/static/css/register.css" rel="stylesheet" type="text/css"> -->
+    <link rel="stylesheet" href="/static/css/register.css">
+    
+{{/section}}
+
+
+
+<div class="container">
+    <div class="col-lg-10 col-xl-9 mx-auto">
+        <div class="card card-signin flex-row my-5">
+            <div class="card-img-left d-none d-md-flex">
+                <!-- Background image for card set in CSS -->
+                
+            </div>
+            <div class="card-body">
+                <h4 class="card-title text-center">Sign In</h4>
+                <form class="form-signin" action="/login" id="main-form" method="POST">
+
+                <hr>
+                <div class="form-label-group">
+                    <input type="text" id="team_id" class="form-control" name="team_id" placeholder="Team id" required>
+                    <label for="team_id">Team Id</label>
+                </div>
+                
+                <div class="form-label-group">
+                    <input type="password" id="password" class="form-control" placeholder="Password" name="password" required>
+                    <label for="password">Password</label>
+                </div>
+                {{#if errorMsg}}
+                <small id="failed-message">{{errorMsg}}</small>
+                {{/if}}
+                <small id="carrot-message">Your Login or password shouldn't have ^</small>
+                <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{{#section 'script'}}
+<script src="/static/js/login.js"></script>
+{{/section}}

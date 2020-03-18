@@ -1,0 +1,43 @@
+{{#section 'header'}}
+    <title>Slack Confessions Sign Up</title>
+    <!-- <link href="slack-confessions/static/css/register.css" rel="stylesheet" type="text/css"> -->
+    <link rel="stylesheet" href="/static/css/register.css">
+{{/section}}
+
+
+<div class="container">
+
+    <div class="col-lg-10 col-xl-9 mx-auto">
+        <div class="card card-signin flex-row my-5">
+            <div class="card-img-left d-none d-md-flex">
+                <!-- Background image for card set in CSS -->
+                
+            </div>
+            <div class="card-body">
+                <h4 class="card-title text-center">Register</h4>
+                <form class="form-signin" id="main-form" action="/register/{{team_id}}" method="POST">
+                    <div class="form-group">
+                        <p class="register-team">Team ID: {{team_id}}</p>
+                    </div>
+                    <hr>
+                    <div class="form-label-group">
+                        <input type="password" id="password1" class="form-control" placeholder="Password" name="password" required>
+                        <label for="password1">Password</label>
+                    </div>
+                    <div class="form-label-group">
+                        <input type="password" id="password2" class="form-control" placeholder="repeat Password" required>
+                        <label for="password2">Repeat Password</label>
+                    </div>
+                    <small id="error-message">Passwords don't match</small>
+                    <small id="carrot-message">Don't use '^' in your password.</small>
+                    <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Register</button>
+                    <a class="d-block text-center mt-2 small txt-primary" href="/login">Sign In</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{#section 'script'}}
+<script src="/static/js/register.js"></script>
+{{/section}}
